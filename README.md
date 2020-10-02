@@ -1,1 +1,1 @@
-# gapminder-scatterplot-d3-js
+# Gapminder Scatterplot using d3.js
