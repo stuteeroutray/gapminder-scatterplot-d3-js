@@ -1,0 +1,103 @@
+html {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+h2, h3 {
+  text-align:center;
+  color: #424047;
+}
+#main {
+  margin:auto;
+  width:1400px;
+}
+input {
+  width:60px;
+  font-size:14px; 
+  border-radius:4px;
+  height: 18px;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  border: 1px solid #ccc;
+  color: #58555c;
+}
+select {
+  width:145px;
+  font-size:14px; 
+  height: 25px;
+  border-radius:4px;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  border: 1px solid #ccc;
+  color: #58555c;
+}
+
+#footer {
+  font-size: 12px; 
+  text-align: left;
+}
+
+#playbutton {
+  margin: 2.5px;
+  background: #778899;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  width: 80px;
+  font-size: 15px;
+}
+
+#playbutton:hover,
+#playbutton:focus {
+  box-shadow: 0 0.1em 0.1em -0.05em #2E343A;
+  transform: translateY(-0.1em);
+  background-color: #767F88;
+}
+
+#gapminder {
+  margin:5px;
+  border-radius:10px;
+  border:1px solid gray;
+  height:600px;
+  width:1380px;
+}
+
+#slider-svg {
+  margin-bottom: -15px;
+  height:60px;
+  width:400px;
+}
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  cursor: pointer;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
