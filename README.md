@@ -5,6 +5,6 @@ In this homework, you'll apply knowledge of animations and joins to create a sca
 * Data downloaded from: [GapMinder Data website](https://www.gapminder.org/data/)
 * Displays a scatterplot that shows two selected attributes for a specific year for a regional set of countries (Africa, North America, etc.).
 * Years can be updated by 
-  1. inputting a specific year in an HTML `input` box, or 
-  2. by starting/stopping an animation that iterates through the years.
+  - inputting a specific year in an HTML `input` box, or 
+  - by starting/stopping an animation that iterates through the years.
 * The current year is set in the background of the scatterplot and it updates as the year changes.
