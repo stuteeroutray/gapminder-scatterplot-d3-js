@@ -5,42 +5,45 @@
     <title>CSE 578 - Fall 2020 - Homework #4</title>
     <link rel='stylesheet' href='css/styles.css'>
     <script src='https://d3js.org/d3.v5.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
     <script src='scripts/index.js'></script>
-
   </head>
   <body>
     <div id='main'>
-      <h2>Homework #4: Fancy GapMinder</h2>
-      <h3>Stutee Routray - sroutra1@asu.edu - 1217025446</h3>
-      <hr style='width:100%'>
-      &nbsp;Year:&nbsp;
-      <input id='year-input' type='number' value='1880' onchange="window.location.reload();"/>
+      <h3>Homework #4: Fancy GapMinder</h3>
+      <h4>Stutee Routray - sroutra1@asu.edu - 1217025446</h4>
+      <hr>
+      &nbsp;Year:
+      <input id='year-input' type='number' value='1800' onchange="onYearUpdate();"/>
       &nbsp;
-      &nbsp;X Attribute&nbsp;
+      &nbsp;X Attribute:&nbsp;
       <select id='x-attribute-select' onchange="window.location.reload();">
-        <option value='1'>..1..</option>
-        <option value='2'>..2..</option>
-        <option value='3'>..3..</option>
-        <option value='4'>..4..</option>
-        <option value='5'>..5..</option>
+        <option value='Life Expectancy'>Life Expectancy (Years)</option>
+        <option value='Birth Rate'>Crude Birth Rate (Per 1000 people)</option>
+        <option value='Quality Income per Person'>Quality of Income per Person (Rated between 0 to 5)</option>
+        <option value='GDP Per Capita Yearly Growth'>GDP Per Capita Yearly Growth</option>
+        <option value='CO2 emissions per Person'>CO2 emissions per Person (Tonnes per person)</option>
+        
       </select>
       &nbsp;
-      &nbsp;Y Attribute&nbsp;
+      &nbsp;Y Attribute:
       <select id='y-attribute-select' onchange="window.location.reload();">
-        <option value='1'>..1..</option>
-        <option value='2'>..2..</option>
-        <option value='3'>..3..</option>
-        <option value='4'>..4..</option>
-        <option value='5'>..5..</option>
+        <option value='CO2 emissions per Person'>CO2 emissions per Person (Tonnes per person)</option>
+        <option value='Life Expectancy'>Life Expectancy (Years)</option>
+        <option value='Quality Income per Person'>Quality of Income per Person (Rated between 0 to 5)</option>
+        <option value='GDP Per Capita Yearly Growth'>GDP Per Capita Yearly Growth</option>
+        <option value='Birth Rate'>Crude Birth Rate (Per 1000 people)</option>
       </select>
       &nbsp;
-      &nbsp;Region&nbsp;
+      &nbsp;Region:
       <select id='region-select' onchange="window.location.reload();">
-        <option value='1'>..1..</option>
-        <option value='2'>..2..</option>
-        <option value='3'>..3..</option>
-        <option value='4'>..4..</option>
-        <option value='5'>..5..</option>
+        <option value='Europe & Central Asia'>Europe & Central Asia</option>
+        <option value='Sub-Saharan Africa'>Sub-Saharan Africa</option>
+        <option value='East Asia & Pacific'>East Asia & Pacific</option>
+        <option value='Latin America & Caribbean'>Latin America & Caribbean</option>
+        <option value='Middle East & North Africa'>Middle East & North Africa</option>
+        <option value='South Asia'>South Asia</option>
+        <option value='North America'>North America</option>
       </select>
       &nbsp;&nbsp;&nbsp;
       <button id="playbutton">Play</button>
@@ -52,7 +55,13 @@
       <label>Data Source:</label>
       <a href='https://www.gapminder.org/data/' target='_blank'>Gapminder Data</a>&nbsp;&nbsp;
       <label>Slider adapted from:</label>
-      <a href='https://bl.ocks.org/rolmax1/c9aadbef53f73a2a9b91cacc7a5418b6/f7d464d639b0b88684de0217944b7daf4c90c11e' target='_blank'>Date slider</a>
+      <a href='https://bl.ocks.org/rolmax1/c9aadbef53f73a2a9b91cacc7a5418b6/f7d464d639b0b88684de0217944b7daf4c90c11e' target='_blank'>
+        Date slider
+      </a>&nbsp;&nbsp;
+      <label>Chart adapted from:</label>
+      <a href='https://observablehq.com/@mbostock/the-wealth-health-of-nations' target='_blank'>
+         Mike Bostock
+      </a>
     </div>
   </body>
 </html>
