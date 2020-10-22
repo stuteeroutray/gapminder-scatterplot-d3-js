@@ -1,6 +1,7 @@
 var countryData;
 var allData;
 var gapminder;
+var slider;
 
 document.addEventListener('DOMContentLoaded', function() {
   Promise.all([d3.csv('data/countries_regions.csv'),
@@ -14,32 +15,37 @@ document.addEventListener('DOMContentLoaded', function() {
     countryData = values[0];
     allData = d3.merge(values);
     gapminder = d3.select('#gapminder');
-    var dataAndAxis = [];
-    dataAndAxis = processData();
+    var xtext =  document.getElementById("x-attribute-select").value;
+    var ytext =  document.getElementById("y-attribute-select").value;
+    var region =  document.getElementById("region-select").value;
+    var dataAndAxis = processData(xtext,ytext,region);
     renderSlider(dataAndAxis);
-    renderXAxis(dataAndAxis[3]);
-    renderYAxis(dataAndAxis[4]);
+    renderXAxis(dataAndAxis[3],xtext);
+    renderYAxis(dataAndAxis[4],ytext);
     var inputYear = document.getElementById("year-input").value;
     updateData(inputYear,dataAndAxis);
     renderLabel(inputYear);
   })
 });
 
-function onYearUpdate(){
+function onClickUpdate(){
     var inputYear = document.getElementById("year-input").value;
-    updateData(inputYear,processData());
+    var xtext =  document.getElementById("x-attribute-select").value;
+    var ytext =  document.getElementById("y-attribute-select").value;
+    var region =  document.getElementById("region-select").value;
+    var dataAndAxis = processData(xtext,ytext,region);
+    updateData(inputYear,dataAndAxis);
     renderLabel(inputYear);
+    slider.selectAll('*').remove();
+    renderSlider(dataAndAxis);
 }
 
-function processData(){
+function processData(xtext,ytext,region){
     //data processing
-    var xtext =  document.getElementById("x-attribute-select").value;
     var xdata = xtext.replaceAll(' ','_')+"Data";
     var xaxis = xtext.replaceAll(' ','_'); 
-    var ytext =  document.getElementById("y-attribute-select").value;
     var ydata = ytext.replaceAll(' ','_')+"Data";
     var yaxis = ytext.replaceAll(' ','_');
-    var region =  document.getElementById("region-select").value;
     var geos = (countryData.filter( d => d.region == region )).map(function (d){return [d.geo,d.name]}); //[geo,name]
     var data = [], i = 0;
     for(var key in geos){ //[name,region,geo,xaxis,yaxis]
@@ -134,9 +140,8 @@ function renderSlider(data){
         .domain([new Date(1800, 0, 1), new Date(2021, 0, 1)])
         .range([0, targetValue])
         .clamp(true);
-        //.nice(6);
 
-    var slider = svg.append("g")
+    slider = svg.append("g")
         .attr("class", "slider")
         .attr("transform", "translate(" + margin.left + "," + height/2 + ")");
 
@@ -200,7 +205,7 @@ function renderSlider(data){
 
     function step() {
       update(x.invert(currentValue));
-      currentValue = currentValue + (targetValue/270); //decides how slow the slider will change values
+      currentValue = currentValue + (targetValue/280); //decides how slow the slider will change values
       if (currentValue > targetValue) {
         moving = false;
         currentValue = 0;
@@ -262,11 +267,10 @@ function renderLabel(year) {
         );          
 }
 
-function renderXAxis(max) {
+function renderXAxis(max,xtext) {
    var margin = {top: 20, right: 50, bottom: 20, left: 50},
     width = 1100 - margin.right - margin.left,
     height = 600 - margin.top - margin.bottom;
-  var xtext =  document.getElementById("x-attribute-select").value;
   var x = d3.scaleLinear()
         .domain([0,max[1]])
         .range([0, width]);
@@ -298,11 +302,10 @@ function renderXAxis(max) {
   );       
 }
 
-function renderYAxis(max) {
+function renderYAxis(max,ytext) {
    var margin = {top: 20, right: 50, bottom: 20, left: 50},
     width = 1100 - margin.right - margin.left,
     height = 600 - margin.top - margin.bottom;   
-  var ytext =  document.getElementById("y-attribute-select").value;
   var y = d3.scaleLinear()
         .domain([0,max[1]])
         .range([height-15, 0]);
@@ -409,7 +412,7 @@ function plotData(data,xaxis,yaxis,xrange,yrange){
                 },
                 update => {
                     update.call(update => update.transition()
-                                                .duration(300)
+                                                .duration(320)
                                                 .call(g => g.selectAll(".glyph circle").attr("r",0))
                                                 .call(g => g.selectAll(".glyph text").attr("opacity",0))
                                                 .attr("cx", d => x(d[xaxis]))
@@ -417,11 +420,11 @@ function plotData(data,xaxis,yaxis,xrange,yrange){
                 },
                 exit => {
                     exit.call(exit => exit.transition()
-                                          .duration(300)
+                                          .duration(320)
                                           .call(g => g.selectAll(".glyph circle").attr("r",0))
                                           .call(g => g.selectAll(".glyph text").attr("opacity",0))
                                           .remove()
-                                          .delay(80));
+                                          .delay(70));
                 }
     );
               
