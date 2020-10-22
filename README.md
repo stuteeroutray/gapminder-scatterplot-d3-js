@@ -1,4 +1,4 @@
-### GapMinder Scatterplot using D3.js [Link](https://stuteeroutray.github.io/gapminder-scatterplot-d3-js/)
+### GapMinder Scatterplot using D3.js ([Link])(https://stuteeroutray.github.io/gapminder-scatterplot-d3-js/)
 
 * GapMinder scatterplot replicated using animations and joins in D3.js.
 * Data downloaded from: [GapMinder Data website](https://www.gapminder.org/data/)
