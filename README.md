@@ -1,5 +1,7 @@
 ### GapMinder Scatterplot using D3.js ([Link](https://stuteeroutray.github.io/gapminder-scatterplot-d3-js/))
 
+This assignment was done as part of CSE 578 - Data Visualization coursework at Arizona State University.
+
 * GapMinder scatterplot replicated using animations and joins in D3.js.
 * Data downloaded from: [GapMinder Data website](https://www.gapminder.org/data/)
 * Displays a scatterplot that shows two selected attributes for a specific year for a regional set of countries (Africa, North America, etc.).
